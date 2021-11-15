@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="real_estate_properties_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="res_model">estate.property</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_real_estate_root" name="Real Estate">
+        <menuitem id="menu_real_estate_advertisments" name="Advertisements">
+            <menuitem id="menu_real_estate_action" action="real_estate_properties_action"/>
+           
+        </menuitem>
+        
+    </menuitem>
+
+   
+
+
+</odoo>
