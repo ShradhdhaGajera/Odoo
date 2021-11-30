@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="estate_property_books_tree" model="ir.ui.view">
+        <field name="name">Books Name</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state=='issued'" decoration-danger="state=='cancel'">
+                <field name="name"/>
+                <field name="price"/>
+                <field name="book_description"/>
+                 <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="estate_property_books_form" model="ir.ui.view">
+        <field name="name">Books Name</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                    	<page string="Price">
+                           <field name="price"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="estate_property_books_form" model="ir.ui.view">
+        <field name="name">Books Name</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_issued" type="object" string="Issued" attrs="{'invisible': [('state','=', 'issued')]}"/>
+                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('state','=', 'cancel')]}"/>
+                    <field name="state" widget="statusbar"/>
+		        </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <notebook>
+                        <page string="Author">
+                            <group>
+                                <group>
+                                    <field name="author_ids" widget="many2many_tags"/>
+                                    <field name="book_description"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Book Detail">
+                            <group>
+                                <group>
+                                    <field name="price"/>
+                                    <field name="isbn"/>
+     				                <field name="category_id" widget="many2one_tags"/>
+                                    <field name="department_id" widget="many2one_tags"/>
+                                </group>
+                                <group>
+                                    <field name="barcode"/>
+                                    <field name="publisher_id" widget="many2one_tags"/>
+                                    <field name="edition"/>
+                                    <field name="date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page>
+                            <group>
+                                <field name="shelf_id" widget="many2one_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="books_search" model="ir.ui.view">
+        <field name="name">Book Search</field>
+        <field name="model">books</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="price"/>
+                <group name="edition"/>
+                <filter name="500 or more price" domain="[('price', '>', 500)]"/>
+                <filter name="Edition" domain="[('edition', '=', True)]"/>
+                <group expand="1" string="Group By">
+                     <filter string="Price" name="price" context="{'group_by': 'price'}"/>
+                     <filter string="Isbn" name="isbn" context="{'group_by': 'isbn'}"/>
+                     <filter string="Barcode" name="barcode" context="{'group_by': 'barcode'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+     <record id="book_issue_tree" model="ir.ui.view">
+        <field name="name">Book Issue</field>
+        <field name="model">book.issue</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+      <record id="book_issue_form" model="ir.ui.view">
+        <field name="name">Book Issue</field>
+        <field name="model">book.issue</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                    	<page string="Email">
+                           <field name="email"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="book_issue_form" model="ir.ui.view">
+        <field name="name">Book Issue</field>
+        <field name="model">book.issue</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   
+                    <notebook>
+                        <page string="User Detail">
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="address"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Other Data">
+                            <group>
+                                <group>
+                                    <field name="dept_ids" widget="many2one_tags"/>
+                                    <field name="cat_ids" widget="many2one_tags"/>
+                                </group>
+                                <group>
+                                    <field name="issue_date"/>
+                                     <field name="ret_date">Return_Date</field>
+
+
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="book_issue_search" model="ir.ui.view">
+        <field name="name">Book Issue</field>
+        <field name="model">book.issue</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="email"/>
+                <filter name="Email" domain="[('email', '=', True)]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Name" name="name" context="{'group_by': 'name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+</odoo>

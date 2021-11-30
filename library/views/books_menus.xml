@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="books_action" model="ir.actions.act_window">
+        <field name="name">Library books</field>
+        <field name="res_model">books</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="real_estate_author_action" model="ir.actions.act_window">
+        <field name="name">Book Author</field>
+        <field name="res_model">author</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <record id="real_estate_category_action" model="ir.actions.act_window">
+        <field name="name">Book Category</field>
+        <field name="res_model">books.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <record id="real_estate_department_action" model="ir.actions.act_window">
+        <field name="name">Book Department</field>
+        <field name="res_model">books.department</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <record id="real_estate_publisher_action" model="ir.actions.act_window">
+        <field name="name">Book Publisher</field>
+        <field name="res_model">books.publisher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="real_estate_rack_action" model="ir.actions.act_window">
+        <field name="name">Rack detail</field>
+        <field name="res_model">rack</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="real_estate_shelf_action" model="ir.actions.act_window">
+        <field name="name">Shelf detail</field>
+        <field name="res_model">shelf</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <record id="real_estate_book_issue_action" model="ir.actions.act_window">
+        <field name="name">Book Issue</field>
+        <field name="res_model">book.issue</field>
+        <field name="view_mode">tree,form</field>
+     </record>
+
+
+    <menuitem id="menu_books_root" name="Library">
+        <menuitem id="menu_book_library_action" name="Book">
+    	     <menuitem id="menu_books_library_action" action="books_action"/>
+             <menuitem id="menu_real_estate_author" action="real_estate_author_action"/>
+             <menuitem id="menu_real_estate_category" action="real_estate_category_action"/>
+    	     <menuitem id="menu_real_estate_department" action="real_estate_department_action"/>
+    	     <menuitem id="menu_real_estate_publisher" action="real_estate_publisher_action"/>
+             <menuitem id="menu_real_estate_rack" action="real_estate_rack_action"/>
+             <menuitem id="menu_real_estate_shelf" action="real_estate_shelf_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="menu_books_root" name="Library">
+        <menuitem id="menu_book_issue_action" name="Book Issue">
+            <menuitem id="menu_books_issue_action" action="real_estate_book_issue_action"/>
+        </menuitem>
+    </menuitem>
+
+
+</odoo>
